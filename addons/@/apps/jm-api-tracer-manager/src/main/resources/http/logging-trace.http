@@ -1,0 +1,5 @@
+### 获取 当个跟踪日志的详情
+GET http://127.0.0.1:9001/bAdmin/v1/traces/16
+
+### 获取 table 列表
+GET http://127.0.0.1:9001/bAdmin/v1/traces?status=200&path=loginByPwd&userAgent=HttpClient&gtMilliSecond=300

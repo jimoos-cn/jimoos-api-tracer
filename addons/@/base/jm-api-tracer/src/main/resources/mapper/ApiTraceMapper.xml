@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jimoos.dao.ApiTraceMapper">
+    <resultMap id="BaseResultMap" type="cn.jimoos.model.ApiTrace">
+        <!--@mbg.generated-->
+        <!--@Table JM_API_TRACE-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="request" jdbcType="LONGVARCHAR" property="request"/>
+        <result column="response" jdbcType="LONGVARCHAR" property="response"/>
+        <result column="tenant_id" jdbcType="VARCHAR" property="tenantId"/>
+        <result column="uri" jdbcType="VARCHAR" property="uri"/>
+        <result column="domain" jdbcType="VARCHAR" property="domain"/>
+        <result column="method" jdbcType="VARCHAR" property="method"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="ip" jdbcType="VARCHAR" property="ip"/>
+        <result column="user_agent" jdbcType="VARCHAR" property="userAgent"/>
+        <result column="os_family" jdbcType="VARCHAR" property="osFamily"/>
+        <result column="correlation" jdbcType="VARCHAR" property="correlation"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="duration" jdbcType="INTEGER" property="duration"/>
+        <result column="create_at" jdbcType="BIGINT" property="createAt"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, request, response, tenant_id, uri, `domain`, `method`, `path`, ip, user_agent,
+        os_family, correlation, `status`, duration, create_at
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from JM_API_TRACE
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.jimoos.model.ApiTrace"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into JM_API_TRACE (request, response, tenant_id,
+                                  uri, `domain`, `method`,
+                                  `path`, ip, user_agent,
+                                  os_family, correlation, `status`,
+                                  duration, create_at)
+        values (#{request,jdbcType=LONGVARCHAR}, #{response,jdbcType=LONGVARCHAR}, #{tenantId,jdbcType=VARCHAR},
+                #{uri,jdbcType=VARCHAR}, #{domain,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR},
+                #{path,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{userAgent,jdbcType=VARCHAR},
+                #{osFamily,jdbcType=VARCHAR}, #{correlation,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+                #{duration,jdbcType=INTEGER}, #{createAt,jdbcType=BIGINT})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.jimoos.model.ApiTrace">
+        <!--@mbg.generated-->
+        update JM_API_TRACE
+        set request     = #{request,jdbcType=LONGVARCHAR},
+            response    = #{response,jdbcType=LONGVARCHAR},
+            tenant_id   = #{tenantId,jdbcType=VARCHAR},
+            uri         = #{uri,jdbcType=VARCHAR},
+            `domain`    = #{domain,jdbcType=VARCHAR},
+            `method`    = #{method,jdbcType=VARCHAR},
+            `path`      = #{path,jdbcType=VARCHAR},
+            ip          = #{ip,jdbcType=VARCHAR},
+            user_agent  = #{userAgent,jdbcType=VARCHAR},
+            os_family   = #{osFamily,jdbcType=VARCHAR},
+            correlation = #{correlation,jdbcType=VARCHAR},
+            `status`    = #{status,jdbcType=VARCHAR},
+            duration    = #{duration,jdbcType=INTEGER},
+            create_at   = #{createAt,jdbcType=BIGINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into JM_API_TRACE
+                (request, response, tenant_id, uri, `domain`, `method`, `path`, ip, user_agent, os_family,
+                 correlation, `status`, duration, create_at)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.request,jdbcType=LONGVARCHAR}, #{item.response,jdbcType=LONGVARCHAR},
+             #{item.tenantId,jdbcType=VARCHAR},
+             #{item.uri,jdbcType=VARCHAR}, #{item.domain,jdbcType=VARCHAR}, #{item.method,jdbcType=VARCHAR},
+             #{item.path,jdbcType=VARCHAR}, #{item.ip,jdbcType=VARCHAR}, #{item.userAgent,jdbcType=VARCHAR},
+             #{item.osFamily,jdbcType=VARCHAR}, #{item.correlation,jdbcType=VARCHAR}, #{item.status,jdbcType=VARCHAR},
+             #{item.duration,jdbcType=INTEGER}, #{item.createAt,jdbcType=BIGINT})
+        </foreach>
+    </insert>
+
+    <select id="queryTable" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from JM_API_TRACE
+                where 1 = 1
+        <if test="path != null">
+            <bind name="bind" value="'%' + path + '%'"/>
+            AND path like #{bind}
+        </if>
+        <if test="userAgent != null">
+            <bind name="bind1" value="'%' + userAgent + '%'"/>
+            AND user_agent like #{bind1}
+        </if>
+        <if test="status != null">
+            AND status = #{status}
+        </if>
+        <if test="tenantId != null">
+            AND tenant_id = #{tenantId}
+        </if>
+        <if test="gtMilliSecond != null">
+            AND duration &gt; #{gtMilliSecond}
+        </if>
+        <if test="startTime != null">
+            AND create_at &gt; #{startTime}
+        </if>
+        <if test="endTime != null">
+            AND create_at &lt; #{endTime}
+        </if>
+        order by create_at desc
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="queryTableCount" resultType="long">
+        select count(id)
+        from JM_API_TRACE
+                where 1 = 1
+        <if test="path != null">
+            <bind name="bind" value="'%' + path + '%'"/>
+            AND path like #{bind}
+        </if>
+        <if test="userAgent != null">
+            <bind name="bind1" value="'%' + userAgent + '%'"/>
+            AND user_agent like #{bind1}
+        </if>
+        <if test="status != null">
+            AND status = #{status}
+        </if>
+        <if test="tenantId != null">
+            AND tenant_id = #{tenantId}
+        </if>
+        <if test="gtMilliSecond != null">
+            AND duration &gt; #{gtMilliSecond}
+        </if>
+        <if test="startTime != null">
+            AND create_at &gt; #{startTime}
+        </if>
+        <if test="endTime != null">
+            AND create_at &lt; #{endTime}
+        </if>
+    </select>
+</mapper>

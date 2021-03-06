@@ -1,0 +1,12 @@
+Addon:
+  Name: jm-api-tracer
+  Ref: jimoos-api-tracer
+  SourceType: git
+  Source: 
+  Description: 接口 request&#x2F;response 跟踪
+  Type: module
+  DependOns: 
+  Conflicts: 
+  Migrations: 
+  Docs: 
+  DataSources: 

@@ -10,7 +10,7 @@
 
 ## 项目入口
 
-api-starter C端接口入口 portal-starter 后台接口入口
+jm-api-tracer-manager Api跟踪日志管理入口
 
 ## 项目插件列表
 

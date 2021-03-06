@@ -11,7 +11,6 @@
     <modules>
         <module>bom</module>
         <module>addons</module>
-        <module>starter</module>
         <module>build-parent</module>
         <module>migration</module>
     </modules>
