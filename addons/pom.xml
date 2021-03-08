@@ -5,7 +5,7 @@
     <parent>
         <artifactId>jm-build-parent</artifactId>
         <groupId>cn.jimoos</groupId>
-        <version>0.0.1</version>
+        <version>0.0.1-SNAPSHOT</version>
         <relativePath>../build-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -22,7 +22,6 @@
         <sonar.moduleKey>${project.groupId}:${project.artifactId}:${sonar.projectKey}</sonar.moduleKey>
     </properties>
     <modules>
-        <module>depends/base/jm-utils</module>
         <module>@/apps/jm-api-tracer-manager</module>
         <module>@/base/jm-api-tracer</module>
     </modules>
