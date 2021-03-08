@@ -42,7 +42,7 @@ mybatis:
   mapper-locations: classpath*:mapper/**/*.xml
   type-aliases-package: cn.jimoos.model
 server:
-  port: 9001
+  port: 4000
 logging:
   level:
     root: info

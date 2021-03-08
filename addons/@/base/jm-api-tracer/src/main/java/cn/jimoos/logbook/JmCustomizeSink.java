@@ -25,7 +25,14 @@ public class JmCustomizeSink implements Sink {
     private static final transient String USER_AGENT = "user-agent";
     private static final transient String X_TENANT_ID = "X-Tenant-Id";
     private static final transient String LOGGING_TRACE = "/traces";
+    private static final transient String ROOT = "/";
+    private static final transient String STATIC_CSS = "/css/";
+    private static final transient String STATIC_JS = "/js/";
+    private static final transient String STATIC_ASSET = "/assets/";
+    private static final transient String FAVICON_ICO = "favicon.ico";
+    private static final transient String LOGO = "logo.png";
     private static final transient String UNKNOWN = "unKnown";
+    private static final transient String DEVELOP = "/develop";
 
     private final ApiTraceMapper apiTraceMapper;
     private final HttpLogFormatter formatter;
@@ -39,7 +46,16 @@ public class JmCustomizeSink implements Sink {
     public void write(Correlation correlation, HttpRequest request, HttpResponse response) throws IOException {
         log.debug("request: {},{}", correlation, formatter.format(correlation, response));
 
-        if (request.getRequestUri().contains(LOGGING_TRACE)) {
+        String requestUri = request.getRequestUri();
+        boolean skip = requestUri.contains(LOGGING_TRACE) ||
+                requestUri.contains(STATIC_CSS) ||
+                requestUri.contains(STATIC_JS) ||
+                requestUri.contains(STATIC_ASSET) ||
+                requestUri.contains(LOGO) ||
+                requestUri.endsWith(ROOT) ||
+                requestUri.endsWith(DEVELOP) ||
+                requestUri.contains(FAVICON_ICO);
+        if (skip) {
             //跳过自己
             return;
         }
