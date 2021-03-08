@@ -45,7 +45,6 @@
         <alipay-sdk-java>4.9.28.ALL</alipay-sdk-java>
         <feign.version>11.0</feign.version>
         <aliyun-sdk-core>4.5.3</aliyun-sdk-core>
-        <guava.version>24.1.1-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -222,11 +221,6 @@
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-java-sdk-core</artifactId>
                 <version>${aliyun-sdk-core}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
