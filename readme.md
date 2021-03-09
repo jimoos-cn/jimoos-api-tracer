@@ -8,6 +8,8 @@
 
 `mvn clean package -Dmaven.test.skip=true`
 
+## 快速上手
+
 ## 项目入口
 
 jm-api-tracer-manager Api跟踪日志管理入口
@@ -22,4 +24,13 @@ jm-api-tracer-manager Api跟踪日志管理入口
 ```bash
  export GPG_TTY=$(tty) 
  mvn clean deploy -P release 
+```
+
+## Docker 镜像构建
+
+```bash
+ #构建镜像
+ docker build -t keepcleargas/jm-api-tracer-manager -f docker/Dockerfile .
+ #推送镜像
+ docker push keepcleargas/jm-api-tracer-manager
 ```
