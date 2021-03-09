@@ -1,6 +1,6 @@
 spring:
   application:
-    name: jimoos-api-tracer-portal
+    name: jimoos-api-tracer-manager
 ---
 spring:
   datasource:
