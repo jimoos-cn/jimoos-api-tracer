@@ -31,12 +31,6 @@
             <scope>import</scope>
         </dependency>
 
-
-        <dependency>
-            <groupId>cn.jimoos</groupId>
-            <artifactId>jm-utils</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <!-- request/response 跟踪-->
         <dependency>
             <groupId>org.zalando</groupId>

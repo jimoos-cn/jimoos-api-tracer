@@ -16,3 +16,10 @@ jm-api-tracer-manager Api跟踪日志管理入口
 
 - `addons/@`下 为项目内插件
 - `addons/depends`为外部插件，外部插件禁止修改。
+
+## 发布组件到oss
+
+```bash
+ export GPG_TTY=$(tty) 
+ mvn clean deploy -P release 
+```

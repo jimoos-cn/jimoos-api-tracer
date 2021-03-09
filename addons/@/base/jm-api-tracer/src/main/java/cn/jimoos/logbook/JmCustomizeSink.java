@@ -5,8 +5,8 @@ import cn.jimoos.model.ApiTrace;
 import cn.jimoos.util.UaUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.zalando.logbook.*;
 
 import java.io.IOException;
