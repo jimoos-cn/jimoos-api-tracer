@@ -5,13 +5,13 @@
     <parent>
         <artifactId>jm-addons-parent</artifactId>
         <groupId>cn.jimoos</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
         <relativePath>../../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jm-api-tracer</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <name>jm-api-tracer</name>
 
