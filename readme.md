@@ -8,7 +8,7 @@
 
 ## 快速上手
 
-### 0. 初始化 数据库
+### 1. 初始化 数据库
 
 ```sql
 CREATE TABLE `JM_API_TRACE`
@@ -32,31 +32,6 @@ CREATE TABLE `JM_API_TRACE`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci COMMENT ='api 接口的 request 和 response 跟踪';
-```
-
-### 1. 配置 maven setting.conf
-
-```xml
-
-<profile>
-    <id>Repository Proxy</id>
-    <activation>
-        <activeByDefault>true</activeByDefault>
-    </activation>
-    <repositories>
-        <repository>
-            <id>oss</id>
-            <name>oss</name>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-</profile>
 ```
 
 ### 2. 在接口模块(监听端)增加 依赖
